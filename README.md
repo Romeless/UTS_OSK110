@@ -5,14 +5,6 @@ Ilmu Komputer 2017
 
 Organisasi Sistem Komputer 110
 
-Sorting Udang Vaname
+Sorting Udang Vaname, memilih udang layak ekspor atau tidak.
 
-    - Memilih udang layak ekspor atau nggak 
-
-        - Ukuran
-
-        - Cacat
-
-        - Usia
-
-		- dll.
+Contoh indikasi: Ukuran, caca/penyakit, usia, dll.
