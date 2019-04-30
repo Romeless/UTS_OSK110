@@ -24,9 +24,9 @@ def otsu_method(im):
         if value > final_value:
             final_thresh = t
             final_value = value
-    return np.round(255 / (final_thresh / 2)).astype('int32')
+    return final_thresh
     
 if __name__ == "__main__":
     from toolbox import *
 else:
-    from lib.toolbox import *
+    from toolbox import *
