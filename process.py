@@ -20,7 +20,7 @@ if __name__ == "__main__":
     for colors in file.readlines():
         split_color = colors.split()
         
-        #split the line, R G B Low_Saturation High_Saturation Low_V High_V
+        #split the line, R G B Low_Saturation High_Saturation Low_V High_V Range
         #i forgot what V is
         r = int(split_color[0])
         g = int(split_color[1])
@@ -42,7 +42,7 @@ if __name__ == "__main__":
         i+=1
     
     #threshold twice
-    #once to smooth the pic, another to completely split between 2 and 3
+    #once to smooth the pic, another to completely split between 0 and 255
     
     threshold = 4
     im2 = level_thresh(im2, threshold)
