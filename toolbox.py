@@ -36,8 +36,8 @@ def sobel_op():
 def scharr_op():
     return (np.array([[-47,0,47],[-162,0,162],[-47,0,47]]), np.array([[47,162,47],[0,0,0],[-47,-162,-47]]))
     
-def save_image(img, filename, desired_extension=".jpg"):
+def save_image(img, filename, info="", ext=".jpg"):
     basename = os.path.basename(filename)
     imagename_no_ext = basename[:basename.rindex('.')]
-        
-    img.convert("RGB").save("{}{}-{}{}".format("outputImage/", imagename_no_ext, time.time(), desired_extension))
+    img = Image.fromarray(img)
+    img.convert("RGB").save("{}{}{}{}".format("output_image/", imagename_no_ext, info, ext))

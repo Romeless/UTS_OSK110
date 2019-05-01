@@ -35,9 +35,9 @@ if __name__ == "__main__":
         
         im2 = mask_color(im2, rgb, s=l_s, v=l_v, high_s=h_s, high_v=h_v, range=ran)
         
-        Image.fromarray(normalize(im2).astype('uint8'))\
-        .save("output\{}[0][{}]-[{},{},{}][{}-{}][{}-{}][{}]{}"\
-        .format(sys.argv[1], i, r, g, b, l_s, h_s, l_v, h_s, ran, ext))
+        #save_image((normalize(im2).astype('uint8')), sys.argv[1],info=\
+        #"[0][{}]-[{},{},{}][{}-{}][{}-{}][{}]"\
+        #.format(i, r, g, b, l_s, h_s, l_v, h_s, ran), ext=ext)
         
         i+=1
     
@@ -50,15 +50,15 @@ if __name__ == "__main__":
     im2 = level_thresh(im2, 2)
     
     im2 = np.uint8(im2)
-    Image.fromarray(normalize(im2).astype('uint8'))\
-        .save("output\{}[1][thresholding]{}"\
-        .format(sys.argv[1], ext))
     
+    #save_image((normalize(im2).astype('uint8')), sys.argv[1],info=\
+    #    "[1][thresholding]", ext=ext)
+        
     #hysteresis the corner, open corner_hyst, good luck understanding that huehue
     im3 = np.array(im2)
     im3[im3 < im3.max()] = 0
-    im3 = hysteresis_corner(im3)
+    im3 = hysteresis_corner(im3, int(min(im3.shape) // 10))
     
-    Image.fromarray(normalize(im3).astype('uint8'))\
-        .save("output\{}[2][hysteresis]{}"\
-        .format(sys.argv[1], ext))
+    save_image((normalize(im3).astype('uint8')), sys.argv[1],info=\
+        "[2][corner hysteresis]", ext=ext)
+        
