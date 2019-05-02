@@ -5,7 +5,6 @@ import matplotlib.image as mpimg
 from PIL import Image
 
 def proc(image):
-    
     im2 = mpimg.imread(image)
     
     gray_im2 = rgb2gray(im2)
