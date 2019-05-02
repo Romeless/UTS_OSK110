@@ -36,8 +36,65 @@ def sobel_op():
 def scharr_op():
     return (np.array([[-47,0,47],[-162,0,162],[-47,0,47]]), np.array([[47,162,47],[0,0,0],[-47,-162,-47]]))
     
-def save_image(img, filename, info="", ext=".jpg"):
+def save_image(img, filename, dir_name="", info="", ext=".jpg"):
     basename = os.path.basename(filename)
     imagename_no_ext = basename[:basename.rindex('.')]
     img = Image.fromarray(img)
-    img.convert("RGB").save("{}{}{}{}".format("output_image/", imagename_no_ext, info, ext))
+    img.convert("RGB").save("{}{}/{}{}{}".format("output_image/", dir_name, imagename_no_ext, info, ext))
+    
+def resize(img, color=(255,255,255)):
+    old_image = Image.fromarray(img).convert("RGB")
+    
+    h, w = old_image.size
+    size = 100
+    
+    denum_h = h / size
+    denum_w = w / size
+    denum = 0
+    if denum_h > denum_w:
+        denum = denum_h
+    else:
+        denum = denum_w
+
+    old_image = old_image.resize((int(h // denum), int(w//denum)))
+    old_size = old_image.size
+        
+    mx = np.array(old_image).max()
+        
+    new_size = (size,size)
+    new_im = Image.new("RGB", new_size)
+    new_im.paste(color, [0,0, new_size[0], new_size[1]])
+    new_im.paste(old_image, (int((new_size[0]-old_size[0])/2),
+                          int((new_size[1]-old_size[1])/2)))
+        
+    return(np.array(new_im))
+    
+def resize2(img):
+    old_image = Image.fromarray(img).convert("RGB")
+    
+    h, w = old_image.size
+    size = 100
+    
+    denum_h = h / size
+    denum_w = w / size
+    denum = 0
+    if denum_h > denum_w:
+        denum = denum_h
+    else:
+        denum = denum_w
+
+    old_image = old_image.resize((int(h // denum), int(w//denum)))
+        
+    return(np.array(old_image))
+    
+def padding(image, color=(255,255,255), size=100):
+    old_image = Image.fromarray(image)
+    old_size = old_image.size
+        
+    new_size = (size,size)
+    new_im = Image.new("RGB", new_size)
+    new_im.paste(color, [0,0, new_size[0], new_size[1]])
+    new_im.paste(old_image, (int(np.ceil(((new_size[0]-old_size[0])/2))),
+                          int(np.floor(((new_size[1]-old_size[1])/2)))))
+        
+    return(np.array(new_im))
