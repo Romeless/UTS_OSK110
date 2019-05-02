@@ -1,8 +1,8 @@
 # UTS OSK 110
 Universitas Negeri Jakarta
 
-Rama Lesmana, 1313617011
-M Luthfi Albiansyah, 1313617033
+- Rama Lesmana, 1313617011
+- M Luthfi Albiansyah, 1313617033
 
 Ilmu Komputer 2017
 
