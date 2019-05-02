@@ -7,8 +7,9 @@ Organisasi Sistem Komputer 110
 
 Sorting Udang Vaname, memilih udang layak ekspor atau tidak.
 
-Contoh indikasi: Ukuran, caca/penyakit, usia, dll.
+Contoh indikasi: Ukuran, cacat/penyakit, usia, dll.
 
+Indikasi yang dipilih: Penyakit Insang Hitam
 
 Process:
 
